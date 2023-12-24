@@ -54,3 +54,21 @@ autoUpdater.on('update-available', () => {
 autoUpdater.on('update-downloaded', () => {
     mainWindow.webContents.send('update_downloaded');
 });
+
+
+// Listen for update downloaded event
+autoUpdater.on('update-downloaded', (event, releaseNotes, releaseName) => {
+    const options = {
+        type: 'info',
+        title: 'Update Ready',
+        message: `A new version (${releaseName}) has been downloaded and is ready to be installed.`,
+        buttons: ['Install now', 'Install later']
+    };
+
+    dialog.showMessageBox(null, options, (response) => {
+        if (response === 0) {
+            // Quit and install the update
+            autoUpdater.quitAndInstall();
+        }
+    });
+});
