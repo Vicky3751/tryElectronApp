@@ -1,5 +1,5 @@
 
-const { app, BrowserWindow, ipcMain } = require('electron');
+const { app, BrowserWindow, ipcMain, dialog } = require('electron');
 const path = require('path');
 const { autoUpdater } = require('electron-updater');
 
@@ -67,7 +67,6 @@ autoUpdater.on('update-downloaded', (event, releaseNotes, releaseName) => {
 
     dialog.showMessageBox(null, options, (response) => {
         if (response === 0) {
-            // Quit and install the update
             autoUpdater.quitAndInstall();
         }
     });
