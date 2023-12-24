@@ -57,10 +57,14 @@
         const message = document.getElementById('message');
         const restartButton = document.getElementById('restart-button');
         window.livisapi.updateAvailable((data) => {
+            console.log("first")
+            version.innerText = 'Version ' + "Hello";
             message.innerText = 'A new update is available. Downloading now...';
             notification.classList.remove('hidden');
         })
         window.livisapi.updateDownload((data) => {
+            console.log("second")
+            version.innerText = 'Version ' + "There";
             restartButton.classList.remove('hidden');
             notification.classList.remove('hidden');
         })
