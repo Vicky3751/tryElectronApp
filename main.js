@@ -55,6 +55,7 @@ autoUpdater.on('update-downloaded', () => {
     mainWindow.webContents.send('update_downloaded');
 });
 
+//added a comment
 
 // Listen for update downloaded event
 autoUpdater.on('update-downloaded', (event, releaseNotes, releaseName) => {
